@@ -6,7 +6,9 @@ export default function ClientPage() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/v1/posts")
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+    fetch(`${API_BASE_URL}/api/v1/posts`)
       .then((response) => response.json())
       .then((data) => setPosts(data));
   }, []);
