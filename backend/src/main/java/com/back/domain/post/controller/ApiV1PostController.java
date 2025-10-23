@@ -17,6 +17,6 @@ public class ApiV1PostController {
 
   @GetMapping("/posts")
   public List<Post> getItems() {
-    return postService.getPosts();
+    return postService.findAll();
   }
 }
