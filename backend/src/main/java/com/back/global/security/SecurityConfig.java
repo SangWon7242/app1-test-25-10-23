@@ -1,5 +1,6 @@
 package com.back.global.security;
 
+import com.back.global.app.AppConfig.AppConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -46,7 +47,7 @@ public class SecurityConfig {
     CorsConfiguration configuration = new CorsConfiguration();
 
     // 허용할 오리진 설정
-    configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+    configuration.setAllowedOrigins(List.of(AppConfig.getSiteFrontUrl()));
 
     // 허용할 HTTP 메서드 설정
     configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
