@@ -17,6 +17,7 @@ public class AppConfig {
   private static ObjectMapper objectMapper;
   private static String siteFrontUrl;
   private static String siteBackUrl;
+  private static String siteCookieDomain;
 
   /**
    * BCrypt 암호화 빈 등록
@@ -46,6 +47,11 @@ public class AppConfig {
   @Value("${custom.site.backUrl}")
   public void setSiteBackUrl(String siteBackUrl) {
     AppConfig.siteBackUrl = siteBackUrl;
+  }
+
+  @Value("${custom.site.cookieDomain}")
+  public void setSiteCookieDomain(String siteCookieDomain) {
+    AppConfig.siteCookieDomain = siteCookieDomain;
   }
 
   // ========== Profile 체크 메서드 ==========
@@ -78,5 +84,9 @@ public class AppConfig {
 
   public static String getSiteBackUrl() {
     return siteBackUrl;
+  }
+
+  public static String getSiteCookieDomain() {
+    return siteCookieDomain;
   }
 }
