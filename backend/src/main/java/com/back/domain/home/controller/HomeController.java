@@ -1,5 +1,6 @@
 package com.back.domain.home.controller;
 
+import com.back.global.app.AppConfig.AppConfig;
 import com.back.global.rq.Rq;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,8 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.UUID;
 
 @Controller
 @Slf4j
@@ -49,5 +54,24 @@ public class HomeController {
   public String getCookie(@PathVariable String name) {
     String cookieValue = rq.getCookieValue(name);
     return cookieValue != null ? cookieValue : "";
+  }
+
+  @GetMapping("/newFile")
+  @ResponseBody
+  public String newFile() throws IOException {
+    String fileName = UUID.randomUUID().toString() + ".html";
+    String filePath = AppConfig.getGenFileDirPath() + "/" + fileName;
+
+    File directory = new File(AppConfig.getGenFileDirPath());
+    if (!directory.exists()) {
+      directory.mkdirs();
+    }
+
+    File file = new File(filePath);
+    try (FileWriter writer = new FileWriter(file)) {
+      writer.write("<h1>%s</h1>".formatted(fileName));
+    }
+
+    return AppConfig.getSiteBackUrl() + "/gen/" + fileName;
   }
 }

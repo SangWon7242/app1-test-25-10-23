@@ -18,6 +18,7 @@ public class AppConfig {
   private static String siteFrontUrl;
   private static String siteBackUrl;
   private static String siteCookieDomain;
+  private static String genFileDirPath;
 
   /**
    * BCrypt 암호화 빈 등록
@@ -54,6 +55,11 @@ public class AppConfig {
     AppConfig.siteCookieDomain = siteCookieDomain;
   }
 
+  @Value("${custom.genFile.dirPath}")
+  public void setGenFileDirPath(String genFileDirPath) {
+    AppConfig.genFileDirPath = genFileDirPath;
+  }
+
   // ========== Profile 체크 메서드 ==========
 
   public static boolean isProd() {
@@ -88,5 +94,9 @@ public class AppConfig {
 
   public static String getSiteCookieDomain() {
     return siteCookieDomain;
+  }
+
+  public static String getGenFileDirPath() {
+    return genFileDirPath;
   }
 }

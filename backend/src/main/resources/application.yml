@@ -53,3 +53,5 @@ custom:
     frontUrl: "${custom.dev.frontUrl}"
     backUrl: "${custom.dev.backUrl}"
     name: APP1
+  genFile:
+    dirPath: c:/temp/app1_dev
