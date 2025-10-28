@@ -74,4 +74,24 @@ public class HomeController {
 
     return AppConfig.getSiteBackUrl() + "/gen/" + fileName;
   }
+
+  @GetMapping("/session/{name}/{value}")
+  @ResponseBody
+  public String setSession(
+      @PathVariable String name,
+      @PathVariable String value) {
+
+    rq.setSession(name, value);
+
+    return name + "=" + value;
+  }
+
+  @GetMapping("/session/{name}")
+  @ResponseBody
+  public String getSession(
+      @PathVariable String name) {
+
+    String sessionValue = rq.getSessionValueAsStr(name);
+    return sessionValue != null ? sessionValue : "";
+  }
 }

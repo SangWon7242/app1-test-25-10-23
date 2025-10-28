@@ -65,4 +65,13 @@ public class Rq {
   public String getHeader(String name) {
     return req.getHeader(name);
   }
+
+  public void setSession(String name, String value) {
+    req.getSession().setAttribute(name, value);
+  }
+
+  public String getSessionValueAsStr(String name) {
+    Object attribute = req.getSession().getAttribute(name);
+    return attribute instanceof String ? (String) attribute : null;
+  }
 }
