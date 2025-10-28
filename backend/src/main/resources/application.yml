@@ -3,7 +3,7 @@ server:
 spring:
   data:
     redis:
-      password: sbsst123414
+      port: 26379
   application:
     name: backend
   profiles:
