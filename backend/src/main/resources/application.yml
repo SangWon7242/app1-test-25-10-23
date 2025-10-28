@@ -1,9 +1,9 @@
 server:
   port: 8080
 spring:
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+  data:
+    redis:
+      password: sbsst123414
   application:
     name: backend
   profiles:
